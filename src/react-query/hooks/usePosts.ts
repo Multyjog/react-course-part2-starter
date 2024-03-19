@@ -12,7 +12,6 @@ interface PostQuery {
   pageSize: number;
 }
 
-// const usePosts = (userId: number | undefined, query: PostQuery) => {
 const usePosts = (query: PostQuery) => {
   const fetchPosts = () =>
     axios
@@ -24,14 +23,11 @@ const usePosts = (query: PostQuery) => {
       })
       .then((res) => res.data);
 
-  // return useQuery<Post[]>({
-  //   queryKey: ["posts", query],
-  //   queryFn: () => fetchPosts(),
-  //   staleTime: 1 * 60 * 1000,
-  // });
-  const { data } = useQuery<Post[]>(["posts", query], () => fetchPosts(), {
-    select: (data: number) => data.toString(),
-    keepPreviousData: true,
+  return useQuery<Post[]>({
+    queryKey: ["posts", query],
+    queryFn: () => fetchPosts(),
+    staleTime: 1 * 60 * 1000,
+    // TODO: keepPreviousData parameter is not specified
   });
 };
 
