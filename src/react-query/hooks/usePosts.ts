@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
+import apiClient from "../../services/api-client";
 
 interface Post {
   id: number;
@@ -13,8 +14,8 @@ interface PostQuery {
 
 const usePosts = (query: PostQuery) => {
   const fetchPosts = (pageParam: number) =>
-    axios
-      .get<Post[]>("https://jsonplaceholder.typicode.com/posts", {
+    apiClient
+      .get<Post[]>("/posts", {
         params: {
           _start: (pageParam - 1) * query.pageSize,
           _limit: query.pageSize,
