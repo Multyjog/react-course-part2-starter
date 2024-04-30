@@ -3,9 +3,9 @@ import React, { Dispatch } from "react";
 
 interface AuthContextType {
   user: string;
-  dispatchAuth: Dispatch<AuthAction>;
+  dispatch: Dispatch<AuthAction>;
 }
 
 export const AuthContext = React.createContext<AuthContextType>(
   {} as AuthContextType
-  );
+);
