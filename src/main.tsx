@@ -5,13 +5,15 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./routing/routes";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RouterProvider router={router}></RouterProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   </React.StrictMode>

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface AuthStore {
   user: string;
-  login: (username: string) => void;
+  login: (username: string) => void; 
   logout: () => void;
 }
 
@@ -13,3 +13,4 @@ const useAuthStore = create<AuthStore>((set) => ({
 }));
 
 export default useAuthStore;
+   
